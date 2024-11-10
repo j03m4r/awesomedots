@@ -1,7 +1,7 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 beautiful.init("/home/joemar/.config/awesome/default/theme.lua")
-local logout_menu_m = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local logout_menu_m = require("widgets.LogoutMenuWidget.logout-menu")
 local logout_menu_widget = logout_menu_m.worker
 local lain = require("lain")
 

@@ -17,7 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local logout_menu_m = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local logout_menu_m = require("widgets.LogoutMenuWidget.logout-menu")
 local open_logout_menu = logout_menu_m.openPopup
 
 -- Custom widgets
