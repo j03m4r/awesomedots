@@ -1,0 +1,11 @@
+git clone git@github.com:lcpz/lain.git
+sudo dnf install dbus-devel gcc git libconfig-devel libev-devel libX11-devel libX11-xcb libxcb-devel libGL-devel libEGL-devel libepoxy-devel meson pcre2-devel pixman-devel uthash-devel xcb-util-image-devel xcb-util-renderutil-devel xorg-x11-proto-devel xcb-util-devel
+git clone git@github.com:yshui/picom.git
+meson setup --buildtype=release build
+ninja -C build
+ninja -C build install
+cargo install clock-tui
+sudo dnf install pavucontrol
+sudo dnf install blueman-manager
+sudo dnf install nitrogen
+sudo dnf install cbonsai
