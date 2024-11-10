@@ -125,7 +125,6 @@ local function worker(user_args)
     logout_menu_widget:buttons(
         awful.util.table.join(
             awful.button({}, 1, function()
-                popup.visible = not popup.visible
                 if popup.visible then
                 logout_menu_widget:get_children_by_id("icon_role")[1].image = gears.color.recolor_image(
                     ICON_DIR .. 'power_w.svg', beautiful.fg_normal)
@@ -133,6 +132,7 @@ local function worker(user_args)
                 logout_menu_widget:get_children_by_id("icon_role")[1].image = gears.color.recolor_image(
                     ICON_DIR .. 'power_w.svg', beautiful.fg_focus)
                 end
+                popup.visible = not popup.visible
             end)
         )
     )
