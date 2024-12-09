@@ -27,13 +27,15 @@ theme.default_border_width = dpi(1)
 theme.default_margin = dpi(10)
 
 theme.bg_normal     = "#16161c"
-theme.bg_focus      = "#99bc80"
+-- theme.bg_focus      = "#99bc80"
+theme.bg_focus      = "#2596be"
 theme.bg_urgent     = "#16161c"
 theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#b1b4b9"
-theme.fg_focus      = "#99bc80"
+-- theme.fg_focus      = "#99bc80"
+theme.fg_focus      = "#2596be"
 theme.fg_urgent     = "#b1b4b9"
 theme.fg_minimize   = "#b1b4b9"
 

@@ -36,7 +36,7 @@ local function create_systemdata_widget(s)
                 {
                     wibox.container.constraint(wibox.container.place(mybattery.widget, "center"), "exact", 60),
                     separator,
-                    wibox.container.constraint(wibox.container.place(wibox.widget.textclock('%H:%M'), "center"), "exact", 60), -- Clock widget
+                    wibox.container.constraint(wibox.container.place(wibox.widget.textclock('%H:%M'), "center"), "exact", 60),
                     separator,
                     wibox.container.constraint(wibox.container.place(logout_menu_widget(), "center"), "exact", 60),
                     spacing = beautiful.default_margin, -- Space between elements

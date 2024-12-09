@@ -169,8 +169,6 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey, }, "w", function() open_logout_menu() end,
         { description = "show main menu", group = "awesome" }),
-    awful.key({modkey, }, "i", function() awful.spawn.with_shell("iwmenu -m rofi") end,
-    { description = "show wifi menu", group = "client"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
