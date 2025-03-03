@@ -17,13 +17,12 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local logout_menu_m = require("widgets.LogoutMenuWidget.logout-menu")
-local open_logout_menu = logout_menu_m.openPopup
-
 -- Custom widgets
 local spotify_widget = require("widgets.SpotifyWidget")
 local create_taglist = require("widgets.TagListWidget")
 local create_systemdata_widget = require("widgets.SystemDataWidget")
+local logout_menu_m = require("widgets.LogoutMenuWidget.logout-menu")
+local open_logout_menu = logout_menu_m.openPopup
 
 -- Brightness state for xrandr
 local brightness = 0.75
@@ -547,9 +546,39 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("picom")
 
 -- Spawn usable applications
-spawn_application("pavucontrol", 50, 50, 1000, 1000, "4")
+spawn_application("pavucontrol", 600, 50, 1000, 1000, "4")
 spawn_application("blueman-manager", 50, 50, 500, 500, "4")
 
-spawn_application("kitty cbonsai --live", 100, 300, 500, 500, "1")
-spawn_application("kitty tclock", 700, 100, 1000, 500, "1")
+local function show_image_with_feh(image_path)
+    awful.spawn.with_shell(string.format([[
+        resized_image=$(mktemp --suffix=.png) &&
+        convert %s -resize 15%% "$resized_image" &&
+        feh --auto-zoom --image-bg black "$resized_image" &&
+        rm "$resized_image"
+    ]], image_path))
+end
+
+local gallery_images = {"/home/joemar/Downloads/hard_eiffel_pic_w_tommy.png", "/home/joemar/Downloads/gran_via.png", "/home/joemar/Downloads/tommy_missing_the_point.png", "/home/joemar/Downloads/intruso.png",
+                        "/home/joemar/Downloads/blurry_bern.png", "/home/joemar/Downloads/malachi_with_kitty.png", "/home/joemar/Downloads/toledo_street_view.png", "/home/joemar/Downloads/tirso_de_molina_flowers.png",
+                        "/home/joemar/Downloads/tommy_plus_grass.png", "/home/joemar/Downloads/happy_gang.png", "/home/joemar/Downloads/madrid_stone_wall.png", "/home/joemar/Downloads/barcelona_building.png",
+                        "/home/joemar/Downloads/wabbo_banana.png", "/home/joemar/Downloads/joe_and_jimbus.png", "/home/joemar/Downloads/state_park.png", "/home/joemar/Downloads/mn_state_fair_work_friends.png",
+                        "/home/joemar/Downloads/scary_john_and_i.png", "/home/joemar/Downloads/mom_and_dad_yay.png", "/home/joemar/Downloads/red_tree.png", "/home/joemar/Downloads/papa_and_i.png",
+                        "/home/joemar/Downloads/pretty_madrid_buildings.png", "/home/joemar/Downloads/me_at_eiffel.png", "/home/joemar/Downloads/bern_people.png", "/home/joemar/Downloads/cute_tucker.png",
+                        "/home/joemar/Downloads/me_in_street.png", "/home/joemar/Downloads/green_italian_steps.png", "/home/joemar/Downloads/beautiful_italy_town.png"}
+
+local img_idx_0 = math.random(27)
+local img_idx_1 = math.random(27)
+while img_idx_0==img_idx_1 do
+    img_idx_1 = math.random(27)
+end
+local img_idx_2 = math.random(27)
+while (img_idx_0==img_idx_2) or (img_idx_1==img_idx_2) do
+    img_idx_2 = math.random(27)
+end
+show_image_with_feh(gallery_images[img_idx_0])
+show_image_with_feh(gallery_images[img_idx_1])
+show_image_with_feh(gallery_images[img_idx_2])
+
+-- spawn_application("kitty cbonsai --live", 100, 300, 500, 500, "1")
+-- spawn_application("kitty tclock", 700, 100, 1000, 500, "1")
 -- spawn_application("kitty bash -c 'curl us.getnews.tech; read -p \"Press <CTRL-C> to close...\"'", 700, 100, 750, 500, "1")
